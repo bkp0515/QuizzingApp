@@ -1,0 +1,5 @@
+Hello!
+This is an application I am in progress writing, its mostly GUI layout work at the moment.
+I am way over the 50 line limit and it does demostrate my understanding of python so far.
+to run first do "pip install customtkinter" and then python app.py. It should launch the landing page for my
+application which is currently just a couple text boxes and some buttons to interact with. 
