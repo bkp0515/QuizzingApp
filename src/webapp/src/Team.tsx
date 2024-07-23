@@ -1,9 +1,9 @@
-import { Quizzers } from "./Quizzers"
+import Quizzers from "./Quizzers.tsx"
 
 interface Team {
     teamName: string,
     teamMembers: Quizzers[],
-    points: numbers,
+    points: number,
 }
 
 export default Team

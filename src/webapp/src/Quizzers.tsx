@@ -1,8 +1,8 @@
 interface Quizzers {
     name: string,
-    correct: numbers,
-    incorrect: numbers,
-    fouls: numbers,
+    correct: number,
+    incorrect: number,
+    fouls: number,
 }
 
 export default Quizzers

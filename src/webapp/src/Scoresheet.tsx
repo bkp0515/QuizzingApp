@@ -1,3 +1,5 @@
+import Team from "./Team.tsx"
+
 interface Scoresheet {
     divisionType: DivisionType,
     redTeam: Team,
@@ -7,9 +9,9 @@ interface Scoresheet {
 }
 
 export enum DivisionType {
-    beginners: "Beginners",
-    intermediate: "Intermediate",
-    experienced: "Experienced",
+    beginners = "Beginners",
+    intermediate = "Intermediate",
+    experienced = "Experienced",
 }
 
 export default Scoresheet

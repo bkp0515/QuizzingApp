@@ -1,11 +1,12 @@
-import {TeamBlock} from "./TeamBlock"
+import {TeamSection} from "./TeamSection"
+import {SubmitBar} from "./SubmitBar"
 
 function ConfigPage() {
     return (
-        <>
-            <TeamBlock color="red" />
-            <TeamBlock color="yellow" />
-        </>
+        <div className="container">
+            <TeamSection />
+            <SubmitBar />
+        </div>
     );
 }
 
