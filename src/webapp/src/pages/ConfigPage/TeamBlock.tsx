@@ -4,16 +4,20 @@ interface Props {
     color: string;
 }
 
-let teamMemberNames = [
-    {"id": 1, "name": "Teammate 1"},
-    {"id": 2, "name": "Teammate 2"},
-]
-
 export const TeamBlock = (props: Props) => {
     return (
         <div className="team-block">
-            <h2>{props.color} team</h2>
-            <TeamMemberNameInputs teamMembers={teamMemberNames} />
+            <div className="form-check form-switch">
+                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">10 Point Bonus</label>
+            </div>
+
+            <div className="input-group input-group-lg" data-bs-theme="dark">
+                <span className="input-group-text">{props.color} Team Name</span>
+                <input type="text" className="form-control" aria-label="Team Name" />
+            </div>
+            
+            <TeamMemberNameInputs />
         </div>
     );
 };
