@@ -1,12 +1,10 @@
 export const VerseConfig = () => {
     return (
-        <>
-            <select defaultValue={"default"}>
+        <div className="container verseConfig" data-bs-theme="dark">
+            <select defaultValue={"default"} className="form-select">
                 <option value="default">2023-2024 Verses</option>
             </select>
-            <select defaultValue={"none"}>
-                <option value="none">none</option>
-            </select>
-        </>
+            <input placeholder="Ending Verse" type="number" min={1} className="form-control" />
+        </div>
     );
 }
