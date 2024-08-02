@@ -1,5 +1,5 @@
 export const SubmitBtn = () => {
     return (
-        <button className="btn">Create Scoresheet</button>
+        <button type="submit" className="btn">Create Scoresheet</button>
     );
 }
