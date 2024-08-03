@@ -1,8 +1,12 @@
 import { TeamMemberNameInputs } from "./TeamMemberNameInputs";
+import { AddTeamMember } from "./AddTeamMember";
+import {TeamInfo} from "../../components"
+import { ListTeamMembers } from "./ListTeamMembers";
 
 interface Props {
-    color: string;
-    teamMemberNames: string[];
+    team: TeamInfo,
+    updateFunc: any,
+    addTeamMemberFunc: any,
 }
 
 export const TeamBlock = (props: Props) => {
@@ -14,11 +18,13 @@ export const TeamBlock = (props: Props) => {
             </div>
 
             <div className="input-group input-group-lg" data-bs-theme="dark">
-                <span className="input-group-text">{props.color} Team Name</span>
-                <input type="text" className="form-control" aria-label="Team Name" />
+                <span className="input-group-text">{props.team.teamColor} Team Name</span>
+                <input value={props.team.teamName} onChange={props.updateFunc} name="teamName" type="text" className="form-control" aria-label="Team Name" />
             </div>
             
-            <TeamMemberNameInputs teamMemberNames={props.teamMemberNames}/>
+            {/* <TeamMemberNameInputs teamMemberNames={props.team.teamMemberNames}/> */}
+            <ListTeamMembers teamMemberNames={props.team.teamMemberNames} />
+            <AddTeamMember addTeamMemberFunc={props.addTeamMemberFunc} />
         </div>
     );
 };
