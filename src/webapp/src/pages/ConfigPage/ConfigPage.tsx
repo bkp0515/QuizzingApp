@@ -11,6 +11,7 @@ enum DivisionType {
 
 interface TeamInfo {
     teamMemberNames: string[],
+    teamColor: string,
     points: number,
 }
 
@@ -27,11 +28,13 @@ function ConfigPage() {
     const [formData, setFormData] = useState<ConfigForm>({
         division: DivisionType.beginners,
         redTeam: {
-            teamMemberNames: [],
+            teamMemberNames: ['','','','',''],
+            teamColor: "red",
             points: 0,
         },
         yellowTeam: {
-            teamMemberNames: [],
+            teamMemberNames: ['','','','',''],
+            teamColor: "yellow",
             points: 0,
         },
         verseFile: '',
@@ -44,11 +47,16 @@ function ConfigPage() {
         console.log('Form Data: ', formData)
     }
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({...formData, [name]: value})
+    }
+
     return (
         <form onClick={handleSubmit}>
             <div className="container">
-                <DivisionBar />
-                <TeamSection />
+                <DivisionBar changeDivisionFunc={handleChange} />
+                <TeamSection listOfTeams={[formData.redTeam.teamMemberNames, formData.yellowTeam.teamMemberNames]}/>
                 <SubmitBar />
             </div>
         </form>

@@ -2,6 +2,7 @@ import { TeamMemberNameInputs } from "./TeamMemberNameInputs";
 
 interface Props {
     color: string;
+    teamMemberNames: string[];
 }
 
 export const TeamBlock = (props: Props) => {
@@ -17,7 +18,7 @@ export const TeamBlock = (props: Props) => {
                 <input type="text" className="form-control" aria-label="Team Name" />
             </div>
             
-            <TeamMemberNameInputs />
+            <TeamMemberNameInputs teamMemberNames={props.teamMemberNames}/>
         </div>
     );
 };

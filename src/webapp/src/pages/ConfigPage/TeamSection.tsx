@@ -1,10 +1,11 @@
 import {TeamBlock} from "./TeamBlock"
 
-export const TeamSection = () => {
+export const TeamSection = ({listOfTeams}) => {
     return (
         <div className="row-component">
-            <TeamBlock color="Red" />
-            <TeamBlock color="Yellow" />
+            {listOfTeams.map( (teamMembers: string[], idx:number) => {
+                return <TeamBlock key={idx} teamMemberNames={teamMembers} color="Red" />
+            } )}
         </div>
     );
 }
