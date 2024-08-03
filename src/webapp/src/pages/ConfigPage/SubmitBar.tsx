@@ -1,10 +1,10 @@
 import { SubmitBtn } from "./SubmitBtn";
 import { VerseConfig } from "./VerseConfig";
 
-export const SubmitBar = () => {
+export const SubmitBar = ({updateVerseInfoFunc}) => {
     return (
         <div className="row-component submitBar">
-            <VerseConfig />
+            <VerseConfig updateVerseInfoFunc={updateVerseInfoFunc} />
             <SubmitBtn />
         </div>
     );

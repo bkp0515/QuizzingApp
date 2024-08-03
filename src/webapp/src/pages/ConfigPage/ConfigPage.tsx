@@ -37,7 +37,7 @@ function ConfigPage() {
             teamColor: "yellow",
             points: 0,
         },
-        verseFile: '',
+        verseFile: 'default',
         endingVerse: 0,
     })
 
@@ -57,7 +57,7 @@ function ConfigPage() {
             <div className="container">
                 <DivisionBar changeDivisionFunc={handleChange} />
                 <TeamSection listOfTeams={[formData.redTeam.teamMemberNames, formData.yellowTeam.teamMemberNames]}/>
-                <SubmitBar />
+                <SubmitBar updateVerseInfoFunc={handleChange} />
             </div>
         </form>
     );
