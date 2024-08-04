@@ -35,6 +35,12 @@ function ConfigPage() {
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault()
 
+        for (let team of formData.teams) {
+            if (team.teamMemberNames.length < 2){
+                return 0
+            }
+        }
+
         console.log('Form Data: ', formData)
     }
 
@@ -54,10 +60,13 @@ function ConfigPage() {
                 if (team.id === teamId){
                     return {
                         ...team,
-                        teamMemberNames: [...teamMemberNames, newTeamMemberName]
+                        teamMemberNames: [...team.teamMemberNames, newTeamMemberName]
                     };
                 }
+                return {...team};
             })
+
+            console.log(updatedTeams)
             return {
                 ...currData,
                 teams: updatedTeams,
@@ -66,7 +75,7 @@ function ConfigPage() {
     }
 
     return (
-        <form onClick={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="container">
                 <DivisionBar changeDivisionFunc={handleChange} />
                 <TeamSection updateFunc={handleChange} addTeamMemberFunc={addTeamMembers} teams={formData.teams}/>

@@ -24,7 +24,7 @@ export const TeamBlock = (props: Props) => {
             
             {/* <TeamMemberNameInputs teamMemberNames={props.team.teamMemberNames}/> */}
             <ListTeamMembers teamMemberNames={props.team.teamMemberNames} />
-            <AddTeamMember addTeamMemberFunc={props.addTeamMemberFunc} />
+            {props.team.teamMemberNames.length < 5 && <AddTeamMember numOfMembers={props.team.teamMemberNames.length} teamId={props.team.id} addTeamMemberFunc={props.addTeamMemberFunc} />}
         </div>
     );
 };
