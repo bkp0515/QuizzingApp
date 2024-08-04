@@ -1,12 +1,14 @@
 interface Props {
-    teamMemberNames: string[]
+    teamMemberNames: string[],
+    teamId: string,
+    removeTeamMemberFunc: any,
 }
 
 export const ListTeamMembers = (props: Props) => {
     return (
         <ul className="list-group" data-bs-theme="light">
             {props.teamMemberNames.map( (name, idx) => {
-                return <li key={idx} className="list-group-item quiz-list">{name} <button className="btn btn-outline-danger">Delete</button></li>
+                return <li key={idx} className="list-group-item quiz-list">{name} <button className="btn btn-outline-danger" onClick={ () => {props.removeTeamMemberFunc(props.teamId,name)} }>Delete</button></li>
             } )}
         </ul>
     );

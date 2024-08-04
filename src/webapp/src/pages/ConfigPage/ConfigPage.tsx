@@ -66,7 +66,6 @@ function ConfigPage() {
                 return {...team};
             })
 
-            console.log(updatedTeams)
             return {
                 ...currData,
                 teams: updatedTeams,
@@ -74,11 +73,31 @@ function ConfigPage() {
         } )
     }
 
+    const removeTeamMembers = (teamId: string, nameToRemove: string) => {
+        setFormData((currData) => {
+            const updatedTeams = currData.teams.map((team: TeamInfo) => {
+                if (team.id === teamId){
+                    const newTeamMemberList = team.teamMemberNames.filter( name => name !== nameToRemove )
+                    return {
+                        ...team,
+                        teamMemberNames: newTeamMemberList
+                    };
+                }
+                return {...team};
+            })
+
+            return {
+                ...currData,
+                teams: updatedTeams,
+            };
+        })
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="container">
                 <DivisionBar changeDivisionFunc={handleChange} />
-                <TeamSection updateFunc={handleChange} addTeamMemberFunc={addTeamMembers} teams={formData.teams}/>
+                <TeamSection removeTeamMemberFunc={removeTeamMembers} updateFunc={handleChange} addTeamMemberFunc={addTeamMembers} teams={formData.teams}/>
                 <SubmitBar updateVerseInfoFunc={handleChange} />
             </div>
         </form>

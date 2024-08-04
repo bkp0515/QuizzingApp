@@ -1,4 +1,5 @@
 import { useState } from "react";
+import uniqid from 'uniqid';
 
 interface Props {
     addTeamMemberFunc: any
@@ -11,7 +12,7 @@ interface NewTeamMember {
 }
 
 export const AddTeamMember = (props: Props) => {
-    const [newTeamMember, setNewTeamMember] = useState<NewTeamMember>({name: `TeamMember${props.numOfMembers + 1}`})
+    const [newTeamMember, setNewTeamMember] = useState<NewTeamMember>({name: `TeamMember_${uniqid()}`})
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +36,7 @@ export const AddTeamMember = (props: Props) => {
         setNewTeamMember( (currName) => {
             return {
                 ...currName,
-                name: `TeamMember${props.numOfMembers + 2}`
+                name: `TeamMember_${uniqid()}`
             };
         })
     }
