@@ -1,10 +1,14 @@
-export const VerseConfig = ({updateVerseInfoFunc}) => {
+interface Props {
+    updateVerseInfoFunc: any,
+}
+
+export const VerseConfig = (props: Props) => {
     return (
         <div className="container verseConfig" data-bs-theme="dark">
-            <select name="verseFile" defaultValue={"default"} onChange={updateVerseInfoFunc} className="form-select">
+            <select name="verseFile" onChange={props.updateVerseInfoFunc} className="form-select">
                 <option value="default">2023-2024 Verses</option>
             </select>
-            <input name="endingVerse" placeholder="Ending Verse" type="number" min={1} onChange={updateVerseInfoFunc} className="form-control" />
+            <input name="endingVerse" placeholder="Ending Verse" type="number" min={1} onChange={props.updateVerseInfoFunc} className="form-control" />
         </div>
     );
 }
