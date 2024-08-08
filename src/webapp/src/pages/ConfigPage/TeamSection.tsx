@@ -5,6 +5,7 @@ interface Props {
     updateFunc: any,
     addTeamMemberFunc: any,
     removeTeamMemberFunc: any,
+    modifyTeamAttributes: any,
     teams: TeamInfo[],
 }
 
@@ -12,7 +13,7 @@ export const TeamSection = (props: Props) => {
     return (
         <div className="row-component">
             {props.teams.map( (team:TeamInfo, idx:number) => {
-                return <TeamBlock key={idx} team={team} removeTeamMemberFunc={props.removeTeamMemberFunc} updateFunc={props.updateFunc} addTeamMemberFunc={props.addTeamMemberFunc} />
+                return <TeamBlock key={idx} team={team} modifyTeamAttributes={props.modifyTeamAttributes} removeTeamMemberFunc={props.removeTeamMemberFunc} updateFunc={props.updateFunc} addTeamMemberFunc={props.addTeamMemberFunc} />
             } )}
         </div>
     );

@@ -54,6 +54,25 @@ function ConfigPage() {
         })
     }
 
+    const modifyTeamAttributes = (teamId: string, name: string, value: any) => {
+        setFormData((currData) => {
+            const updatedTeams = currData.teams.map((team: TeamInfo) => {
+                if (team.id === teamId){
+                    return {
+                        ...team,
+                        [name]: value
+                    };
+                }
+                return {...team};
+            })
+
+            return {
+                ...currData,
+                teams: updatedTeams,
+            };
+        } )
+    }
+
     const addTeamMembers = (teamId: string, newTeamMemberName: string) => {
         setFormData((currData) => {
             const updatedTeams = currData.teams.map((team: TeamInfo) => {
@@ -97,7 +116,7 @@ function ConfigPage() {
         <form onSubmit={handleSubmit}>
             <div className="container">
                 <DivisionBar changeDivisionFunc={handleChange} />
-                <TeamSection removeTeamMemberFunc={removeTeamMembers} updateFunc={handleChange} addTeamMemberFunc={addTeamMembers} teams={formData.teams}/>
+                <TeamSection modifyTeamAttributes={modifyTeamAttributes} removeTeamMemberFunc={removeTeamMembers} updateFunc={handleChange} addTeamMemberFunc={addTeamMembers} teams={formData.teams}/>
                 <SubmitBar updateVerseInfoFunc={handleChange} />
             </div>
         </form>
