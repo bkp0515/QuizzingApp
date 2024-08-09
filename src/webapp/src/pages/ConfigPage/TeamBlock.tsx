@@ -44,6 +44,11 @@ export const TeamBlock = (props: Props) => {
                 <span className="input-group-text">Team Name</span>
                 <input value={props.team.teamName} onChange={handleChange} name="teamName" type="text" className="form-control" aria-label="Team Name" />
             </div>
+
+            <div>
+                <h5 className="card-subtext">{props.team.teamMemberNames.length}/5 Teammates</h5>
+                {props.team.teamMemberNames.length < 2 && <div className="alert alert-danger" role="alert" data-bs-theme="dark">At least 2 Teammates Required!</div>}
+            </div>
             
             <ListTeamMembers teamId={props.team.id} removeTeamMemberFunc={props.removeTeamMemberFunc} teamMemberNames={props.team.teamMemberNames} />
             {props.team.teamMemberNames.length < 5 && <AddTeamMember numOfMembers={props.team.teamMemberNames.length} teamId={props.team.id} addTeamMemberFunc={props.addTeamMemberFunc} />}

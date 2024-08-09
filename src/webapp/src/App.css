@@ -80,3 +80,7 @@
   align-items: flex-start;
   justify-content: space-between;
 }
+
+.card-subtext {
+  font-size: 0.9em;
+}
