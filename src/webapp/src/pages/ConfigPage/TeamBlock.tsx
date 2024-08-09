@@ -21,8 +21,8 @@ export const TeamBlock = (props: Props) => {
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        if (name === "bonusPts") value = (value === "yes" ? false : true)
-
+        if (name === "bonusPts") value = (value === "no" ? true : false)
+            
         setTeamAttr( (currTeamAttr) => {
             return {
                 ...currTeamAttr,
@@ -36,7 +36,7 @@ export const TeamBlock = (props: Props) => {
     return (
         <div className="team-block">
             <div className="form-check form-switch">
-                <input value={teamAttr.bonusPts ? "yes" : "no"} onChange={handleChange} name="bonusPts" className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                <input value={teamAttr.bonusPts ? "yes" : "no"} checked={teamAttr.bonusPts} onChange={handleChange} name="bonusPts" className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                 <label className="form-check-label" htmlFor="flexSwitchCheckDefault">10 Point Bonus</label>
             </div>
 
@@ -45,7 +45,6 @@ export const TeamBlock = (props: Props) => {
                 <input value={props.team.teamName} onChange={handleChange} name="teamName" type="text" className="form-control" aria-label="Team Name" />
             </div>
             
-            {/* <TeamMemberNameInputs teamMemberNames={props.team.teamMemberNames}/> */}
             <ListTeamMembers teamId={props.team.id} removeTeamMemberFunc={props.removeTeamMemberFunc} teamMemberNames={props.team.teamMemberNames} />
             {props.team.teamMemberNames.length < 5 && <AddTeamMember numOfMembers={props.team.teamMemberNames.length} teamId={props.team.id} addTeamMemberFunc={props.addTeamMemberFunc} />}
         </div>
