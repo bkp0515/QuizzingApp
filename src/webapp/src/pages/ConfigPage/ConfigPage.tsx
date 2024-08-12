@@ -6,7 +6,11 @@ import uniqid from 'uniqid';
 
 import {DivisionType, TeamInfo, ConfigForm} from "../../components"
 
-function ConfigPage() {
+interface Props {
+    setGlobalFunc: any
+}
+
+function ConfigPage(props: Props) {
 
     const [formData, setFormData] = useState<ConfigForm>({
         division: DivisionType.beginners,
@@ -41,7 +45,7 @@ function ConfigPage() {
             }
         }
 
-        console.log('Form Data: ', formData)
+        props.setGlobalFunc('gameConfig', formData)
     }
 
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
