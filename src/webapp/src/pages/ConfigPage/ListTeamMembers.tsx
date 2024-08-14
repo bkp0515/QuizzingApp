@@ -1,5 +1,7 @@
+import {TeamMember} from "../../components"
+
 interface Props {
-    teamMemberNames: string[],
+    teamMembers: TeamMember[],
     teamId: string,
     removeTeamMemberFunc: any,
 }
@@ -7,8 +9,8 @@ interface Props {
 export const ListTeamMembers = (props: Props) => {
     return (
         <ul className="list-group" data-bs-theme="light">
-            {props.teamMemberNames.map( (name, idx) => {
-                return <li key={idx} className="list-group-item quiz-list">{name} <button className="btn btn-outline-danger" onClick={ () => {props.removeTeamMemberFunc(props.teamId,name)} } type="button">Delete</button></li>
+            {props.teamMembers.map( (teamMember, idx) => {
+                return <li key={idx} className="list-group-item quiz-list">{teamMember.name} <button className="btn btn-outline-danger" onClick={ () => {props.removeTeamMemberFunc(props.teamId,teamMember.name)} } type="button">Delete</button></li>
             } )}
         </ul>
     );

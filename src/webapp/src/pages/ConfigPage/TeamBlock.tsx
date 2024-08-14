@@ -19,7 +19,7 @@ interface TeamAttributes {
 export const TeamBlock = (props: Props) => {
     const [teamAttr, setTeamAttr] = useState<TeamAttributes>({teamName: props.team.teamName, bonusPts: props.team.bonusPts})
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
         if (name === "bonusPts") value = (value === "no" ? true : false)
             
@@ -46,12 +46,12 @@ export const TeamBlock = (props: Props) => {
             </div>
 
             <div>
-                <h5 className="card-subtext">{props.team.teamMemberNames.length}/5 Teammates</h5>
-                {props.team.teamMemberNames.length < 2 && <div className="alert alert-danger" role="alert" data-bs-theme="dark">At least 2 Teammates Required!</div>}
+                <h5 className="card-subtext">{props.team.teamMembers.length}/5 Teammates</h5>
+                {props.team.teamMembers.length < 2 && <div className="alert alert-danger" role="alert" data-bs-theme="dark">At least 2 Teammates Required!</div>}
             </div>
             
-            <ListTeamMembers teamId={props.team.id} removeTeamMemberFunc={props.removeTeamMemberFunc} teamMemberNames={props.team.teamMemberNames} />
-            {props.team.teamMemberNames.length < 5 && <AddTeamMember numOfMembers={props.team.teamMemberNames.length} teamId={props.team.id} addTeamMemberFunc={props.addTeamMemberFunc} />}
+            <ListTeamMembers teamId={props.team.id} removeTeamMemberFunc={props.removeTeamMemberFunc} teamMembers={props.team.teamMembers} />
+            {props.team.teamMembers.length < 5 && <AddTeamMember numOfMembers={props.team.teamMembers.length} teamId={props.team.id} addTeamMemberFunc={props.addTeamMemberFunc} />}
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import uniqid from 'uniqid';
+import { TeamMember } from "../../components";
 
 interface Props {
     addTeamMemberFunc: any
@@ -7,14 +8,17 @@ interface Props {
     numOfMembers: number,
 }
 
-interface NewTeamMember {
-    name: string
-}
-
 export const AddTeamMember = (props: Props) => {
-    const [newTeamMember, setNewTeamMember] = useState<NewTeamMember>({name: `TeamMember_${uniqid()}`})
+    const [newTeamMember, setNewTeamMember] = useState<TeamMember>({
+        id: uniqid(),
+        name: `TeamMember_${uniqid()}`,
+        correct: 0,
+        errors: 0,
+        fouls: 0,
+        interupts: 0,
+    })
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { name: any; value: any; }; }) => {
         const { name, value } = e.target;
 
         setNewTeamMember( (currName) => {
@@ -25,18 +29,19 @@ export const AddTeamMember = (props: Props) => {
         } )
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault()
 
         if (newTeamMember.name.length < 1){
             return 0
         }
 
-        props.addTeamMemberFunc(props.teamId, newTeamMember.name)
+        props.addTeamMemberFunc(props.teamId, newTeamMember)
         setNewTeamMember( (currName) => {
             return {
                 ...currName,
-                name: `TeamMember_${uniqid()}`
+                id: uniqid(),
+                name: `TeamMember_${uniqid()}`,
             };
         })
     }

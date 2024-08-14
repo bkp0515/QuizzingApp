@@ -4,7 +4,7 @@ import { SubmitBar } from "./SubmitBar"
 import { DivisionBar } from "./DivisionBar";
 import uniqid from 'uniqid';
 
-import {DivisionType, TeamInfo, ConfigForm, QuizPages} from "../../components"
+import {DivisionType, TeamInfo, ConfigForm, QuizPages, TeamMember} from "../../components"
 
 interface Props {
     setGlobalFunc: any
@@ -18,18 +18,20 @@ function ConfigPage(props: Props) {
             {
                 id: uniqid(),
                 teamName: "Red Team",
-                teamMemberNames: [],
+                teamMembers: [],
                 teamColor: "red",
                 points: 0,
                 bonusPts: true,
+                teamFouls: 0,
             },
             {
                 id: uniqid(),
                 teamName: "Yellow Team",
-                teamMemberNames: [],
+                teamMembers: [],
                 teamColor: "yellow",
                 points: 0,
                 bonusPts: true,
+                teamFouls: 0,
             },
         ],
         verseFile: 'default',
@@ -40,13 +42,14 @@ function ConfigPage(props: Props) {
         e.preventDefault()
 
         for (let team of formData.teams) {
-            if (team.teamMemberNames.length < 2){
+            if (team.teamMembers.length < 2){
                 return 0
             }
         }
 
         props.setGlobalFunc('gameConfig', formData)
         props.setGlobalFunc('currentPage', QuizPages.Scoresheet)
+        console.log(formData)
     }
 
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -78,13 +81,13 @@ function ConfigPage(props: Props) {
         } )
     }
 
-    const addTeamMembers = (teamId: string, newTeamMemberName: string) => {
+    const addTeamMembers = (teamId: string, newTeamMember: TeamMember) => {
         setFormData((currData) => {
             const updatedTeams = currData.teams.map((team: TeamInfo) => {
                 if (team.id === teamId){
                     return {
                         ...team,
-                        teamMemberNames: [...team.teamMemberNames, newTeamMemberName]
+                        teamMembers: [...team.teamMembers, newTeamMember]
                     };
                 }
                 return {...team};
@@ -101,7 +104,7 @@ function ConfigPage(props: Props) {
         setFormData((currData) => {
             const updatedTeams = currData.teams.map((team: TeamInfo) => {
                 if (team.id === teamId){
-                    const newTeamMemberList = team.teamMemberNames.filter( name => name !== nameToRemove )
+                    const newTeamMemberList = team.teamMembers.filter( teamMember => teamMember.name !== nameToRemove )
                     return {
                         ...team,
                         teamMemberNames: newTeamMemberList
