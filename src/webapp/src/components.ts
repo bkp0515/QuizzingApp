@@ -19,3 +19,8 @@ export interface ConfigForm {
     verseFile: string,
     endingVerse: number,
 }
+
+export enum QuizPages {
+    ConfigForm = "configForm",
+    Scoresheet = "scoresheet",
+  }

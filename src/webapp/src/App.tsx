@@ -1,17 +1,12 @@
 import { useState } from "react";
 import ConfigPage from "./pages/ConfigPage/ConfigPage.tsx"
 import ScoreKeeping from "./pages/ScoreKeeping/ScoreKeeping.tsx"
-import {ConfigForm} from "./components.ts"
+import {ConfigForm, QuizPages} from "./components.ts"
 import './App.css'
-
-enum QuizPages {
-  ConfigForm = "configForm",
-  Scoresheet = "Scoresheet",
-}
 
 interface AppState {
   currentPage: QuizPages,
-  gameConfig: null | ConfigForm
+  gameConfig: null | ConfigForm,
 }
 
 function App() {
@@ -27,7 +22,6 @@ function App() {
         [name]: value,
       };
     })
-    console.log(value)
   }
 
   return (

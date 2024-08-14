@@ -4,7 +4,7 @@ import { SubmitBar } from "./SubmitBar"
 import { DivisionBar } from "./DivisionBar";
 import uniqid from 'uniqid';
 
-import {DivisionType, TeamInfo, ConfigForm} from "../../components"
+import {DivisionType, TeamInfo, ConfigForm, QuizPages} from "../../components"
 
 interface Props {
     setGlobalFunc: any
@@ -46,6 +46,7 @@ function ConfigPage(props: Props) {
         }
 
         props.setGlobalFunc('gameConfig', formData)
+        props.setGlobalFunc('currentPage', QuizPages.Scoresheet)
     }
 
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
