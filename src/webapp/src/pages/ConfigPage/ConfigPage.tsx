@@ -107,7 +107,7 @@ function ConfigPage(props: Props) {
                     const newTeamMemberList = team.teamMembers.filter( teamMember => teamMember.name !== nameToRemove )
                     return {
                         ...team,
-                        teamMemberNames: newTeamMemberList
+                        teamMembers: newTeamMemberList
                     };
                 }
                 return {...team};
