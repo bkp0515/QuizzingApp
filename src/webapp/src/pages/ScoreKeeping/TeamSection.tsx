@@ -1,10 +1,16 @@
 import { TeamBlock } from "./TeamBlock";
+import { TeamInfo } from "../../components";
 
-export const TeamSection = () => {
+interface Props {
+    teams: TeamInfo[],
+}
+
+export const TeamSection = (props: Props) => {
     return (
         <div className="row-component">
-            <TeamBlock />
-            <TeamBlock />
+            {props.teams.map((team, idx) => {
+                return <TeamBlock key={idx} teamInfo={team} />;
+            })}
         </div>
     );
 }

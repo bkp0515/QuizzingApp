@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       { appState.currentPage == QuizPages.ConfigForm && <ConfigPage setGlobalFunc={handleChange} /> }
-      { appState.currentPage == QuizPages.Scoresheet && <ScoreKeeping /> }
+      { appState.currentPage == QuizPages.Scoresheet && appState.gameConfig != null && <ScoreKeeping gameConfig={appState.gameConfig} /> }
     </>
   );
 }

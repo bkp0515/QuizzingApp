@@ -1,3 +1,5 @@
+import { FoulButton } from "./FoulButton";
+
 export const TeamBlockBottomRow = () => {
     return (
         <div className="row-component">
@@ -6,7 +8,7 @@ export const TeamBlockBottomRow = () => {
             <button className="btn">W</button>
             <button className="btn">D</button>
             <button className="btn">G</button>
-            <button className="btn">F</button>
+            <FoulButton />
         </div>
     );
 }

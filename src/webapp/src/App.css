@@ -84,3 +84,15 @@
 .card-subtext {
   font-size: 0.9em;
 }
+
+.spread-out{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.input-group {
+  align-items: center;
+  justify-content: center;
+}
