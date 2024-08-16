@@ -1,26 +1,30 @@
 import { FoulButton } from "./FoulButton";
 import { TeamMember } from "../../components";
 import { TeamMemberRow_UserDropdown } from "./TeamMemberRow_UserDropdown";
+import { useState } from "react";
+import { RowInfo } from "./ScoreKeeping_components"
 
 interface Props {
-    currTeamMemberId: string,
+    currRowConfig: RowInfo,
     teamMembers: TeamMember[],
     answerBtnName: string,
 }
 
 export const TeamMemberRow = (props: Props) => {
+    const [rowState, setRowState] = useState<RowInfo>(props.currRowConfig)
+
     return (
         <div className="row-component spread-out">
-            <h4>{props.currTeamMemberId}</h4>
+            <h5>{rowState.currMember.name}</h5>
 
             <div className="input-group">
-                <button className="btn btn-outline-primary" type="button">{props.answerBtnName}</button>
-                <button className="btn btn-outline-info" type="button">Interrupt</button>
+                <button className="btn btn-outline-primary btn-buzzer" type="button">{props.answerBtnName}</button>
+                <button className="btn btn-outline-info btn-buzzer" type="button">I</button>
             </div>
 
             <div className="input-group">
-                <button className="btn btn-outline-success" type="button">Correct</button>
-                <button className="btn btn-outline-warning" type="button">Error</button>
+                <button className="btn btn-outline-success btn-buzzer" type="button" disabled>C</button>
+                <button className="btn btn-outline-warning btn-buzzer" type="button" disabled>E</button>
             </div>
 
             <FoulButton />
