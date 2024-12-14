@@ -14,7 +14,7 @@ export const TeamMemberRow = (props: Props) => {
     const [rowState, setRowState] = useState<RowInfo>(props.currRowConfig)
 
     return (
-        <div className="row-component spread-out">
+        <div className="grid-container">
             <h5>{rowState.currMember.name}</h5>
 
             <div className="input-group">
